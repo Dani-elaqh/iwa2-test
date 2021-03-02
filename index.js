@@ -1,5 +1,17 @@
 const http = require('http');
-const axios = require('axios');
+const axios = require('axios'),
+logger = require('morgan'),
+cors = require ('cors');
+express = require('express'),
+bodyParser = require('body-parser');
+
+var app = express();
+var port = 8000;
+
+//create the routing 
+app.get('/hello', (req, res)=>{
+    res.send("Hello BScBest!")
+});//end point is hello 
 
 http.createServer((req, res)=>{
   res.write(people.join(" \ n ")); //display the list of users on the page
@@ -19,5 +31,9 @@ let people = []; // names of users will be stored here
   } catch(error){
     console.log(error)
   }
-})()
+})();
+
+app.listen(port, function(err){
+    console.log('Listening on port: ' + port)
+});
 
