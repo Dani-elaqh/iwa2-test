@@ -10,7 +10,9 @@ let users = []; // names of users will be stored here
   try{
     const {data} = await axios.get("https://jsonplaceholder.typicode.com/users");
     users = data.map(user=>user.name);
+    console.log(users)
   } catch(error){
     console.log(error)
   }
 })()
+
