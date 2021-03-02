@@ -6,11 +6,11 @@ http.createServer((req, res)=>{
 }).listen(8000); // listen for requests on port 8000
 
 let users = []; // names of users will be stored here
-axios.get("https://jsonplaceholder.typicode.com/users")
-.then(({ data }) => {
-    users = data.map(user => user.name); // get only the names of the users and store in an array
-    console.log(users)
-})
-.catch(error=>{
-    console.log(error);
-});
+(async function getNames(){
+  try{
+    const {data} = await axios.get("https://jsonplaceholder.typicode.com/users");
+    users = data.map(user=>user.name);
+  } catch(error){
+    console.log(error)
+  }
+})()
