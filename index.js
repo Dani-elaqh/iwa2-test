@@ -8,16 +8,31 @@ bodyParser = require('body-parser');
 var app = express();
 var port = 8000;
 
+app.use(bodyParser.json())
+
+app.get('/hello/sw', (req, res) => {
+    // this res will just work if you have the StarWars API called
+    res.json({characteres: characteres});
+});
+
+app.get('/hello', (req, res) => {
+    res.json({"message": "Hello there!"})
+});
+
 //create the routing 
-app.get('/hello', (req, res)=>{
-    res.send("Hello BScBest!")
+app.get('/hello/:foo/:bar', (req, res)=>{
+    res.json({message: 'Hello BScBest!', data: [
+        req.params.foo,
+        req.params.bar
+    ]});
 });//end point is hello 
 
-http.createServer((req, res)=>{
-  res.write(people.join(" \ n ")); //display the list of users on the page
-  //res.write("\n\n"+emails.join(", ")); //display the list of users on the page
-  res.end(); //end the response
-}).listen(8000); // listen for requests on port 8000
+app.post('/hello', (req,res) => {
+    res.json({result: 'Post was sent', data: req.body});
+});
+
+app.listen(port);
+
 
 let people = []; // names of users will be stored here
 
@@ -26,14 +41,14 @@ let people = []; // names of users will be stored here
     const {data} = await axios.get("https://swapi.dev/api/people/");
     //console.log(data);
     people = data.results.map(user=>user.name);
-    console.log(users);
+    // console.log(users);
     //console.log(homeworld);
   } catch(error){
     console.log(error)
   }
 })();
 
-app.listen(port, function(err){
-    console.log('Listening on port: ' + port)
-});
+//app.listen(port, function(err){
+  //  console.log('Listening on port: ' + port)
+//});
 
