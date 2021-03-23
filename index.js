@@ -10,7 +10,8 @@ var port = 8000;
 
 app.use(bodyParser.json())
 app.use(logger('tiny'));
-app.user(require('./routes'));//middleware
+//middleware
+app.use(require('./routes'));
 
 //app.get('/hello/sw', (req, res) => {
     // this res will just work if you have the StarWars API called
@@ -18,9 +19,9 @@ app.user(require('./routes'));//middleware
 //});
 //app.listen(port);
 
-app.get('/hello', (req, res) => {
-    res.json({"message": "Hello there!"})
-});
+// app.get('/hello', (req, res) => {
+//     res.json({"message": "Hello there!"})
+// });
 
 
 // let people = []; // names of users will be stored here

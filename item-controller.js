@@ -12,6 +12,4 @@ exports.getWorldParams = function(req,res){
 exports.postWorld = function(req,res){
     res.json({result: 'Post was sent', data: req.body});
 };
-const express = require('express'),
-router = express.Router();
 
