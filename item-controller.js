@@ -12,4 +12,3 @@ exports.getWorldParams = function(req,res){
 exports.postWorld = function(req,res){
     res.json({result: 'Post was sent', data: req.body});
 };
-
