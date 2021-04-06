@@ -1,16 +1,18 @@
 const http = require('http'),
-axios = require('axios'),
+//axios = require('axios'),
 logger = require('morgan'),
 cors = require('cors'),
 express = require('express'),
 bodyParser = require('body-parser'),
 mongoose = require('mongoose');
 
+//server
 var app = express();
 var port = 8000;
-
+//middleware, resides bet user and input the app, layer work json to sned a receive
 app.use(bodyParser.json());
 app.use(logger('tiny'));
+//
 app.use(require('./routes'));
 
 // http.createServer((req, res)=>{
