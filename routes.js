@@ -18,11 +18,11 @@ router.delete('/users/:id', userCtrl.deleteUser);
 //creater var that will tell where upload file are
 module.exports.UPLOAD_PATH= "uploads";
 //include module multer, middleware takes care of uploading
-var multer = requiere("multer");
+var multer = require("multer");
 //create instance of multer, provide path
 var upload = multer({ dest: module.exports.UPLOAD_PATH});
 //provide functionality to the route that we gonna create
-var imageCtrl = requiere('./image-controller');
+var imageCtrl = require('./image-controller');
 
 router.post('/image', upload.single('image'), imageCtrl.uploadIamge);
 
